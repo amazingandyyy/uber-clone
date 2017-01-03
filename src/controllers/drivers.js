@@ -1,5 +1,5 @@
 export default {
     greeting: (req, res) => {
-        res.send('heyyy')
+        res.send('Hello api.')
     }
 }
