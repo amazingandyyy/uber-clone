@@ -1,12 +1,13 @@
-const assert = require('assert');
-const request = require('supertest');
-const app = require('../server');
+import assert from 'assert';
+import request from 'supertest';
+import app from '../server';
 
 describe('the express App', () => {
-  it('handles a request to root route', (done) => {
+  it('handles a request to api route', (done) => {
     request(app)
-      .get('/')
+      .get('/api')
       .end((err, response) => {
+        assert(response.status === 200);
         done();
       });
   });
