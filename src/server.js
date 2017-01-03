@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import api from './routes/api';
 
 const app = express();
 
@@ -15,8 +16,6 @@ app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
 
-app.get('/api', (req, res) => {
-    res.send('d')
-});
+app.use('/api', api);
 
 module.exports = app;
