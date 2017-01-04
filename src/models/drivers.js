@@ -3,10 +3,12 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema({
     email: {
         type: String,
-        unique: true,
         required: true
     },
-    driving: Boolean
+    driving: {
+        type: Boolean,
+        default: false
+    }
 })
 
 export default mongoose.model('Driver', Schema);

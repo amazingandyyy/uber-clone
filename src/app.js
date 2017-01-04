@@ -1,5 +1,19 @@
-import app from 'app'
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import api from './routes/api';
 
-app.listen(8000, () => {
-  console.log('Running on port 8000');
+const app = express();
+
+mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost/muber');
+
+app.use(bodyParser.json());
+
+app.use((err, req, res, next) => {
+  res.status(422).send({ error: err.message });
 });
+
+app.use('/api', api);
+
+export default app;
