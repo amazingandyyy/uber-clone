@@ -13,10 +13,11 @@ if(process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use('/api', api);
+
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
 
-app.use('/api', api);
 
 export default app;

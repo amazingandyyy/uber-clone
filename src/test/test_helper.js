@@ -7,7 +7,6 @@ before((done) => {
       done();
     })
     .on('error', error => {
-
         console.warn('Warning', error);
     });
 });
