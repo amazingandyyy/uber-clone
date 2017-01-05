@@ -4,6 +4,16 @@ export default {
   test : (req, res) => {
     res.send('api works.')
   },
+  index: (req, res, next) => {
+    const { lng, lat } = req.query;
+
+    Driver.geoNear(
+      { type: 'Point', coordinates: [parseFloat(lng), parseFloat(lat)] },
+      { spherical: true, maxDistance: 200000 }
+    )
+    .then(drivers => res.send(drivers))
+    .catch(next)
+  },
   create : (req, res, next) => {
     const driver = req.body;
     Driver.create(driver)
@@ -22,12 +32,6 @@ export default {
     const driverId = req.params.id;
     Driver.findByIdAndRemove(driverId)
       .then(driver => res.status(204).send(driver))
-      .catch(next)
-  },
-  getOne: (req, res, next) => {
-    const driverId = req.params.id;
-    Driver.findById(driverId)
-      .then(driver => res.send(driver))
       .catch(next)
   }
 };
