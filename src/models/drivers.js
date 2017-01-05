@@ -11,4 +11,6 @@ const Schema = mongoose.Schema({
     }
 })
 
-export default mongoose.model('Driver', Schema);
+const model = mongoose.model('Driver', Schema);
+
+export default model;

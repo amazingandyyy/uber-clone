@@ -7,8 +7,11 @@ export default {
   create : (req, res) => {
     const driver = req.body;
     Driver.create(driver)
-      .then(() => {
-        res.send();
+      .then((driver) => {
+        res.send(driver);
+      })
+      .catch(err => {
+        res.status(401).send(err)
       })
   }
 }

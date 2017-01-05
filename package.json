@@ -5,7 +5,7 @@
   "main": "./lib/server.js",
   "scripts": {
     "start": "nodemon ./lib/server.js",
-    "test": "nodemon --watch ./src --exec 'npm run prod && mocha --recursive ./lib/test -R min' ",
+    "test": "NODE_ENV=test nodemon --watch ./src --exec 'npm run prod && mocha --recursive ./lib/test -R min' ",
     "prod": "babel src -d lib",
     "postinstall": "npm run prod",
     "dev": "nodemon --watch ./src --exec 'npm run prod && npm run start' ",

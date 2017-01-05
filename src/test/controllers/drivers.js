@@ -6,13 +6,13 @@ import app from '../../app';
 const Driver = mongoose.model('Driver');
 
 describe('Drivers controller', () => {
-  it('Post to /api/drivers to create a new driver', done => {
+  it('Post to /api/drivers creates a new driver', (done) => {
     Driver
       .count()
       .then(count => {
-        request.agent(app)
+        request(app)
           .post('/api/drivers')
-          .send({ email: 'email' })
+          .send({email: 'email'})
           .end(() => {
             Driver
               .count()
